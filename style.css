@@ -356,3 +356,66 @@ table { background: #101d31; }
   nav a { padding: 6px 7px; }
   .nav-icon { width: 19px; height: 19px; font-size: 14px; }
 }
+
+
+/* FINAL AZ NAVY + ORANGE DIGITAL BUSINESS THEME */
+:root{
+ --navy:#061a3d;--blue:#ff8a00;--yellow:#ffad18;
+ --ink:#f2f6ff;--muted:#b8c7dc;--paper:#08172f;
+}
+html,body{background:#08172f;color:#f2f6ff}
+body{background:radial-gradient(ellipse at 12% 8%,rgba(24,74,139,.22),transparent 36%),#08172f}
+header{background:rgba(4,16,39,.97);border-bottom:1px solid rgba(255,153,25,.28);box-shadow:0 8px 28px #0007}
+.brand,nav,nav a{color:#f3f6ff}
+.brand small{color:#ff9b19}
+nav a:hover{color:#ffb52e;background:#ff9b1918}
+.nav-icon{color:#ffad18;background:#ff9b1920}
+.hero,.detail{background:
+ radial-gradient(circle at 86% 12%,rgba(255,138,0,.18),transparent 31%),
+ radial-gradient(circle at 10% 90%,rgba(26,91,165,.28),transparent 38%),
+ linear-gradient(125deg,#04132e,#092a56 60%,#071a38)}
+.hero:after{border-color:rgba(255,138,0,.65)}
+.hero p,.detail p,.contact p{color:#c5d2e5}
+.tag{color:#ffd28a;background:#ff9b1915;border-color:#ffad1880}
+.btn.yellow,.yellow{background:linear-gradient(135deg,#ffc247,#ff8500);color:#1b2230}
+.btn.blue{background:linear-gradient(135deg,#ff9f1c,#ed7100);color:#101b2c}
+.btn.dark{background:#10294d;color:#fff;border:1px solid #355274}
+.btn.green,.float{background:linear-gradient(135deg,#0c956c,#087653);color:#fff}
+.btn.outline{border-color:#91a8c6;color:#f2f6ff}
+.btn.white{background:#f5f8ff;color:#092044}
+.strip{background:#0d2548;color:#e9f1ff;border-block:1px solid #28415f}
+section{background:#08172f}
+.heading small,.contact small{color:#ff9b19}
+.heading h2,.about h2,.contact h2{color:#f4f7ff}
+.heading p,.muted,.service p,.product-info p,.muted-small{color:#b4c3d8}
+.service,.panel,.stat,.product-card,.detail-card{
+ color:#edf3ff;background:linear-gradient(145deg,#112b50,#0b1e3b);
+ border:1px solid #294568;box-shadow:0 14px 34px #0005
+}
+.service h3,.product-info h3,.detail-card h2{color:#f5f7ff}
+.service:hover{border-color:#ff9b19;box-shadow:0 18px 40px #0007}
+.ico{color:#ffd58b;background:linear-gradient(145deg,#59401c,#332a20);border:1px solid #9b6b28}
+.arrow,.back,.price,.stat b{color:#ffad24}
+.about{background:linear-gradient(135deg,#102544,#091a35);border-block:1px solid #29415f}
+.about p{color:#c1cde0}
+.about img{border:2px solid #ff9b19;box-shadow:0 18px 45px #0007}
+.gallery-section{background:radial-gradient(circle at 50% 15%,#102f5a,#08172f 68%)}
+.gallery-photo{background:#11294b;border:1px solid #ff9b1966;box-shadow:0 16px 40px #0007}
+.gallery-photo img{background:#09172d}
+.contact{background:radial-gradient(circle at 88% 10%,#17416d,transparent 40%),linear-gradient(120deg,#06142e,#0b2d55);border-top:1px solid #ff9b1940}
+footer{background:#030d20;color:#c5d2e5;border-top:2px solid #ff8a00}
+.product-visual{background:linear-gradient(135deg,#19375c,#352b20)}
+input,select,textarea{color:#edf3ff;background:#091a34;border-color:#38516f}
+input::placeholder,textarea::placeholder{color:#91a4bf}
+input:focus,select:focus,textarea:focus{outline:2px solid #ff9b1970;border-color:#ff9b19}
+.field label{color:#eaf1ff}
+.notice{color:#ffe2ae;background:#382b19;border-color:#986a2a}
+.admin-side{background:linear-gradient(160deg,#061632,#12345d)}
+.admin-side button.active,.admin-side button:hover{color:#ffb52e}
+.admin-actions button,.mini-btn{color:#e9f1ff;background:#243c5d}
+.status{color:#ffe2ae;background:#57401e}
+table{color:#eaf1ff;background:#0d203d}
+th{color:#f4f7ff;background:#193354}
+td{color:#d8e3f1;border-bottom-color:#29415f}
+.pill{color:#ffe2ae;background:#49371d}
+@media(max-width:760px){nav a{padding:6px 7px}}

@@ -79,3 +79,280 @@ img { max-width: 100%; }
   margin: 0;
   text-align: center;
 }
+
+
+
+/* AZ signature dark color grade: midnight navy, electric blue and warm gold */
+:root {
+  --navy: #07152f;
+  --blue: #2d7cff;
+  --yellow: #f5c451;
+  --ink: #e8eefb;
+  --muted: #a7b4cc;
+  --paper: #0b1426;
+}
+body {
+  color: var(--ink);
+  background:
+    radial-gradient(ellipse at 12% 8%, rgba(32, 91, 170, .16), transparent 34%),
+    radial-gradient(ellipse at 88% 45%, rgba(20, 119, 148, .10), transparent 32%),
+    #0b1426;
+}
+header {
+  background: rgba(6, 17, 38, .97);
+  border-bottom: 1px solid rgba(128, 165, 220, .18);
+  box-shadow: 0 8px 28px rgba(0, 0, 0, .35);
+}
+.brand, nav a { color: #eef4ff; }
+.brand small { color: #91a5c7; }
+nav a:hover { color: #f5c451; }
+.hero {
+  background:
+    radial-gradient(circle at 82% 16%, rgba(50, 130, 255, .42), transparent 34%),
+    radial-gradient(circle at 10% 90%, rgba(16, 150, 170, .20), transparent 36%),
+    linear-gradient(120deg, #06132b 0%, #0b2854 52%, #103b70 100%);
+}
+.hero-art {
+  border: 1px solid rgba(255,255,255,.15);
+  box-shadow: 0 18px 55px rgba(0,0,0,.38);
+}
+.tag {
+  background: rgba(255,255,255,.08);
+  border-color: rgba(210,226,255,.30);
+  color: #e9f2ff;
+}
+.hero p, .detail p, .contact p { color: #c4d2e9; }
+.yellow { background: linear-gradient(135deg, #ffdb78, #e9ad32); color: #172033; }
+.green { background: linear-gradient(135deg, #13a878, #087b67); color: #fff; }
+.outline { border-color: rgba(205,224,255,.45); color: #edf4ff; }
+.strip {
+  color: #dce9ff;
+  background: #101f38;
+  border-top: 1px solid rgba(130,164,216,.14);
+  border-bottom: 1px solid rgba(130,164,216,.14);
+}
+section { background: transparent; }
+.heading small { color: #69a6ff; }
+.heading h2, .about h2, .service h3, .detail-card h2 { color: #edf3ff; }
+.heading p, .muted { color: #a7b4cc; }
+.services .service,
+.service,
+.panel,
+.product-card,
+.stat,
+.detail-card {
+  color: #e8eefb;
+  background: linear-gradient(145deg, #14243e, #101d33);
+  border: 1px solid rgba(133,164,213,.19);
+  box-shadow: 0 14px 34px rgba(0,0,0,.22);
+}
+.service:hover {
+  border-color: rgba(245,196,81,.72);
+  box-shadow: 0 18px 40px rgba(0,0,0,.34);
+}
+.service p, .muted-small { color: #a7b4cc; }
+.arrow, .back { color: #79b0ff; }
+.ico {
+  background: linear-gradient(145deg, #263d5d, #1a2d48);
+  border: 1px solid rgba(245,196,81,.22);
+}
+.about {
+  background: linear-gradient(135deg, #0e1b31, #111f36);
+  border-top: 1px solid rgba(133,164,213,.12);
+  border-bottom: 1px solid rgba(133,164,213,.12);
+}
+.about-grid p { color: #bdcbe0; }
+.about img { box-shadow: 0 18px 45px rgba(0,0,0,.42); }
+.contact {
+  background:
+    radial-gradient(circle at 85% 20%, rgba(58,137,255,.28), transparent 35%),
+    linear-gradient(120deg, #06132b, #0b2d5a 65%, #0c416b);
+}
+footer {
+  background: #040b18;
+  color: #c8d7ef;
+  border-top: 1px solid rgba(133,164,213,.16);
+}
+.float {
+  background: linear-gradient(135deg, #12a879, #08765f);
+  box-shadow: 0 10px 28px rgba(0,0,0,.45);
+}
+.detail {
+  background:
+    radial-gradient(circle at 80% 10%, rgba(45,124,255,.35), transparent 36%),
+    linear-gradient(130deg, #06132b, #0c2c58);
+}
+.product-visual {
+  background: linear-gradient(135deg, #1d3555, #26334a);
+}
+.price, .stat b { color: #79b0ff; }
+input, select, textarea {
+  color: #edf3ff;
+  background: #0b172b;
+  border-color: #344765;
+}
+input::placeholder, textarea::placeholder { color: #8798b4; }
+input:focus, select:focus, textarea:focus {
+  outline: 2px solid rgba(75,145,255,.45);
+  border-color: #4b91ff;
+}
+.notice {
+  color: #ffe6a3;
+  background: #332a19;
+  border-color: #715a2d;
+}
+.admin-side { background: linear-gradient(160deg, #07152f, #12345d); }
+.admin-side button.active, .admin-side button:hover { color: #f5c451; }
+.admin-actions button, .mini-btn {
+  color: #dce9ff;
+  background: #263a58;
+}
+.status { color: #ffe6a3; background: #51401f; }
+table { color: #e8eefb; background: #101d33; }
+th { color: #eaf2ff; background: #1b2e4b; }
+td { border-bottom-color: #293b57; }
+.gallery-section { background: #0b1426; }
+.gallery-photo {
+  background: #14243e;
+  border-color: rgba(133,164,213,.22);
+  box-shadow: 0 16px 40px rgba(0,0,0,.34);
+}
+.gallery-photo img { background: #0a1323; }
+.pill { color: #ffe7a8; background: #3a301d; }
+@media (prefers-reduced-motion: no-preference) {
+  .service, .btn, .float { transition: transform .22s ease, box-shadow .22s ease, border-color .22s ease; }
+}
+
+
+/* AZ signature dark color grade */
+:root {
+  --navy: #07152f;
+  --blue: #087eaa;
+  --yellow: #f6bd38;
+  --ink: #e9f0fb;
+  --muted: #aab8cc;
+  --paper: #0b1426;
+}
+body {
+  color: var(--ink);
+  background: #0b1426;
+}
+header {
+  background: #07152f;
+  border-bottom: 1px solid #203653;
+  box-shadow: 0 8px 28px #0007;
+}
+.brand { color: #f5f8ff; }
+.brand small { color: #91a7c5; }
+nav { color: #dce8f8; }
+nav a {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  padding: 8px 9px;
+  border-radius: 10px;
+  transition: background .2s ease, color .2s ease;
+}
+nav a:hover {
+  color: #ffd36a;
+  background: #ffffff12;
+}
+.nav-icon {
+  display: inline-grid;
+  place-items: center;
+  width: 21px;
+  height: 21px;
+  border-radius: 7px;
+  color: #ffd36a;
+  background: #f6bd3820;
+  font-size: 15px;
+  line-height: 1;
+}
+.hero {
+  background:
+    radial-gradient(circle at 88% 12%, #126b9c 0, transparent 34%),
+    radial-gradient(circle at 8% 95%, #163c68 0, transparent 42%),
+    linear-gradient(125deg, #061126, #0a2346 55%, #092e4a);
+}
+.hero p { color: #c2d3e8; }
+.tag {
+  background: #d9edff12;
+  border-color: #8ab6d855;
+  color: #e8f5ff;
+}
+.strip {
+  background: #101f35;
+  color: #e8f2ff;
+  border-top: 1px solid #263c58;
+  border-bottom: 1px solid #263c58;
+}
+section { background: #0b1426; }
+.heading h2 { color: #f1f6ff; }
+.heading p, .muted { color: #aab8cc; }
+.service, .panel, .stat, .product-card, .detail-card {
+  color: #e8f0fb;
+  background: linear-gradient(145deg, #17263d, #101d31);
+  border-color: #2a405e;
+  box-shadow: 0 14px 34px #0004;
+}
+.service h3, .product-info h3, .detail-card h2 { color: #f4f7ff; }
+.service p, .product-info p, .muted-small { color: #aebdd1; }
+.service:hover {
+  border-color: #f6bd38;
+  box-shadow: 0 18px 40px #0006;
+}
+.ico {
+  color: #ffe19a;
+  background: linear-gradient(145deg, #58451a, #302a20);
+  border: 1px solid #8d6d2b;
+}
+.about {
+  background: linear-gradient(135deg, #101e33, #0b1426);
+  border-top: 1px solid #233a56;
+  border-bottom: 1px solid #233a56;
+}
+.about h2 { color: #f2f6ff; }
+.about p { color: #c0ccdc; }
+.gallery-section { background: #0b1426; }
+.gallery-photo {
+  background: #14243a;
+  border-color: #314866;
+  box-shadow: 0 16px 38px #0006;
+}
+.contact {
+  background:
+    radial-gradient(circle at 90% 10%, #126b9c, transparent 40%),
+    linear-gradient(120deg, #061126, #0c3152);
+}
+footer {
+  background: #040b18;
+  color: #c6d5e8;
+  border-top: 1px solid #203653;
+}
+.float {
+  background: #087e58;
+  border: 1px solid #35c58d;
+}
+.btn.yellow {
+  background: linear-gradient(135deg, #ffd66b, #e8a91d);
+  color: #18243a;
+}
+.btn.green { background: #087e58; }
+.btn.outline { border-color: #8ca8c8; color: #e8f2ff; }
+.btn.white { background: #eaf3ff; color: #092344; }
+.detail {
+  background: linear-gradient(130deg, #061126, #0a4165);
+}
+input, select, textarea {
+  color: #eaf2ff;
+  background: #0d1a2d;
+  border-color: #354c69;
+}
+input::placeholder, textarea::placeholder { color: #8fa2bb; }
+th { background: #1b2d45; color: #f0f5ff; }
+td { color: #d6e1ef; border-color: #2a405e; }
+table { background: #101d31; }
+@media (max-width: 760px) {
+  nav a { padding: 6px 7px; }
+  .nav-icon { width: 19px; height: 19px; font-size: 14px; }
+}

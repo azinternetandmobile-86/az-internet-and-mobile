@@ -13,8 +13,13 @@ const firebaseConfig = {
   if (!area) return;
 
   const inp =
-    "display:block;width:100%;padding:10px 12px;margin-top:6px;box-sizing:border-box;background:#0f172a;color:#f8fafc;border:1px solid #334155;border-radius:6px";
-  const lbl = "display:block;color:#e2e8f0;font-weight:600;font-size:14px";
+    "display:block;width:100%;padding:10px 12px;margin-top:6px;box-sizing:border-box;background:#ffffff;color:#0f172a;border:1px solid #cbd5e1;border-radius:8px;font-size:14px";
+  const lbl = "display:block;color:#0f172a;font-weight:600;font-size:14px";
+  const cardS =
+    "background:#f8fafc;border:1px solid #e2e8f0;border-radius:12px;padding:14px;margin-bottom:12px;color:#0f172a";
+  const primaryBtn =
+    "padding:10px 18px;background:linear-gradient(135deg,#2563eb,#1d4ed8);color:#ffffff;border:0;border-radius:8px;font-weight:700;cursor:pointer;box-shadow:0 4px 12px rgba(37,99,235,0.22)";
+
   const esc = s =>
     String(s ?? "")
       .replace(/&/g, "&amp;")
@@ -33,9 +38,9 @@ const firebaseConfig = {
           <label style="${lbl}">Password</label>
           <input id="admin-password" type="password" required style="${inp}">
         </div>
-        <button type="submit" style="padding:12px 24px;background:#f5ad28;color:#0f172a;border:0;border-radius:8px;font-weight:bold;cursor:pointer">Login करें</button>
+        <button type="submit" style="${primaryBtn}">Login करें</button>
       </form>
-      <p id="login-msg" style="color:#f87171;margin-top:10px">${esc(msg)}</p>
+      <p id="login-msg" style="color:#dc2626;font-weight:600;margin-top:10px">${esc(msg)}</p>
     `;
   }
 
@@ -76,8 +81,9 @@ const firebaseConfig = {
         const s = document.getElementById("ts-" + t);
         if (!b || !s) return;
         const on = t === tab;
-        b.style.background = on ? "#f5ad28" : "#1e293b";
-        b.style.color = on ? "#0f172a" : "#e2e8f0";
+        b.style.background = on ? "#2563eb" : "#eff6ff";
+        b.style.color = on ? "#ffffff" : "#1d4ed8";
+        b.style.borderColor = on ? "#2563eb" : "#bfdbfe";
         s.style.display = on ? "block" : "none";
       });
     }
@@ -87,7 +93,7 @@ const firebaseConfig = {
       if (!box || !bookingsSnap) return;
       const list = bookingsSnap.docs.filter(d => filterVal === "All" || (d.data().status || "New") === filterVal);
       if (!list.length) {
-        box.innerHTML = "<p style='color:#cbd5e1'>कोई Booking नहीं मिली।</p>";
+        box.innerHTML = "<p style='color:#475569'>कोई Booking नहीं मिली।</p>";
         return;
       }
       const sts = ["New", "Pending", "Confirmed", "In Progress", "Completed", "Cancelled"];
@@ -96,16 +102,16 @@ const firebaseConfig = {
           const b = d.data();
           const st = b.status || "New";
           return `
-            <div style="background:#1e293b;border:1px solid #334155;border-radius:8px;padding:12px;margin-bottom:10px">
-              <strong>${esc(b.customerName || b.name || b.phone || "Customer")}</strong>
-              <p style="margin:4px 0">Service: ${esc(b.service || b.productName || b.item || "-")}</p>
-              ${b.phone ? `<p style="margin:4px 0">Phone: ${esc(b.phone)}</p>` : ""}
-              ${b.message || b.notes ? `<p style="margin:4px 0;color:#cbd5e1">Note: ${esc(b.message || b.notes)}</p>` : ""}
-              <div style="margin-top:8px;display:flex;gap:8px;align-items:center">
-                <select class="b-st" data-id="${d.id}" style="padding:6px;background:#0f172a;color:#fff;border:1px solid #475569;border-radius:6px">
+            <div style="${cardS}">
+              <strong style="font-size:15px;color:#0f172a">${esc(b.customerName || b.name || b.phone || "Customer")}</strong>
+              <p style="margin:4px 0;color:#334155">Service: ${esc(b.service || b.productName || b.item || "-")}</p>
+              ${b.phone ? `<p style="margin:4px 0;color:#334155">Phone: ${esc(b.phone)}</p>` : ""}
+              ${b.message || b.notes ? `<p style="margin:4px 0;color:#475569">Note: ${esc(b.message || b.notes)}</p>` : ""}
+              <div style="margin-top:10px;display:flex;gap:8px;align-items:center;flex-wrap:wrap">
+                <select class="b-st" data-id="${d.id}" style="padding:7px 10px;background:#ffffff;color:#0f172a;border:1px solid #cbd5e1;border-radius:8px;font-weight:600">
                   ${sts.map(x => `<option value="${x}" ${st === x ? "selected" : ""}>${x}</option>`).join("")}
                 </select>
-                <button type="button" class="b-del" data-id="${d.id}" style="padding:6px 10px;background:#7f1d1d;color:#fecaca;border:0;border-radius:6px;cursor:pointer;margin-left:auto">हटाएँ</button>
+                <button type="button" class="b-del" data-id="${d.id}" style="padding:7px 12px;background:#fee2e2;color:#b91c1c;border:1px solid #fecaca;border-radius:8px;font-weight:600;cursor:pointer;margin-left:auto">हटाएँ</button>
               </div>
             </div>`;
         })
@@ -167,7 +173,7 @@ const firebaseConfig = {
 
       unsubP = fsM.onSnapshot(fsM.collection(db, "products"), snap => {
         if (snap.empty) {
-          box.innerHTML = "<p style='color:#cbd5e1'>अभी कोई Product नहीं है।</p>";
+          box.innerHTML = "<p style='color:#475569'>अभी कोई Product नहीं है।</p>";
           return;
         }
         const map = new Map(snap.docs.map(d => [d.id, d.data()]));
@@ -175,14 +181,14 @@ const firebaseConfig = {
           .map(d => {
             const p = d.data();
             return `
-              <div style="background:#1e293b;border:1px solid #334155;border-radius:8px;padding:12px;margin-bottom:10px;display:flex;justify-content:space-between;align-items:center;gap:8px;flex-wrap:wrap">
+              <div style="${cardS}display:flex;justify-content:space-between;align-items:center;gap:8px;flex-wrap:wrap">
                 <div>
-                  <strong>${esc(p.name)}</strong> — <span style="color:#f5ad28">₹${esc(p.price)}</span>
-                  ${p.category ? `<span style="background:#334155;padding:2px 6px;border-radius:4px;font-size:12px">${esc(p.category)}</span>` : ""}
+                  <strong>${esc(p.name)}</strong> — <span style="color:#1d4ed8;font-weight:700">₹${esc(p.price)}</span>
+                  ${p.category ? `<span style="background:#dbeafe;color:#1e40af;padding:2px 8px;border-radius:999px;font-size:12px;font-weight:600;margin-left:4px">${esc(p.category)}</span>` : ""}
                 </div>
                 <div style="display:flex;gap:6px">
-                  <button type="button" class="p-edit" data-id="${d.id}" style="padding:6px 10px;background:#334155;color:#fff;border:0;border-radius:4px;cursor:pointer">बदलें</button>
-                  <button type="button" class="p-del" data-id="${d.id}" style="padding:6px 10px;background:#e53935;color:#fff;border:0;border-radius:4px;cursor:pointer">हटाएँ</button>
+                  <button type="button" class="p-edit" data-id="${d.id}" style="padding:6px 12px;background:#e2e8f0;color:#0f172a;border:0;border-radius:6px;font-weight:600;cursor:pointer">बदलें</button>
+                  <button type="button" class="p-del" data-id="${d.id}" style="padding:6px 12px;background:#fee2e2;color:#b91c1c;border:0;border-radius:6px;font-weight:600;cursor:pointer">हटाएँ</button>
                 </div>
               </div>`;
           })
@@ -242,11 +248,12 @@ const firebaseConfig = {
     }
 
     function drawDashboard(user) {
-      const btnS = "padding:8px 12px;border:1px solid #334155;border-radius:6px;font-weight:600;cursor:pointer";
+      const btnS =
+        "padding:8px 14px;border:1px solid #bfdbfe;border-radius:8px;font-weight:700;cursor:pointer;transition:0.2s";
       area.innerHTML = `
-        <div style="display:flex;justify-content:space-between;align-items:center;gap:8px;flex-wrap:wrap;border-bottom:1px solid #334155;padding-bottom:10px;margin-bottom:14px">
-          <div><strong>${esc(user.email)}</strong></div>
-          <button id="logout-btn" style="padding:7px 14px;background:#e53935;color:#fff;border:0;border-radius:6px;cursor:pointer">Logout</button>
+        <div style="display:flex;justify-content:space-between;align-items:center;gap:8px;flex-wrap:wrap;border-bottom:1px solid #e2e8f0;padding-bottom:12px;margin-bottom:16px">
+          <div style="color:#0f172a"><strong>${esc(user.email)}</strong></div>
+          <button id="logout-btn" style="padding:7px 14px;background:#fee2e2;color:#b91c1c;border:1px solid #fecaca;border-radius:8px;font-weight:600;cursor:pointer">Logout</button>
         </div>
         <div style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:18px">
           <button type="button" id="tb-bookings" style="${btnS}">Bookings</button>
@@ -255,7 +262,7 @@ const firebaseConfig = {
         </div>
 
         <div id="ts-bookings">
-          <select id="b-filter" style="padding:6px;background:#0f172a;color:#fff;border:1px solid #475569;border-radius:6px;margin-bottom:10px">
+          <select id="b-filter" style="padding:8px 12px;background:#ffffff;color:#0f172a;border:1px solid #cbd5e1;border-radius:8px;margin-bottom:12px;font-weight:600">
             <option value="All">All</option><option value="New">New</option><option value="Pending">Pending</option>
             <option value="Confirmed">Confirmed</option><option value="In Progress">In Progress</option>
             <option value="Completed">Completed</option><option value="Cancelled">Cancelled</option>
@@ -264,30 +271,30 @@ const firebaseConfig = {
         </div>
 
         <div id="ts-products" style="display:none">
-          <form id="p-form" style="background:#1e293b;padding:14px;border-radius:8px;margin-bottom:14px">
+          <form id="p-form" style="${cardS}margin-bottom:16px">
             <input type="hidden" id="p-id">
             <div style="margin-bottom:10px"><label style="${lbl}">Name *</label><input id="p-name" required style="${inp}"></div>
             <div style="margin-bottom:10px"><label style="${lbl}">Price (₹) *</label><input id="p-price" type="number" required style="${inp}"></div>
             <div style="margin-bottom:10px"><label style="${lbl}">Category</label><input id="p-cat" style="${inp}"></div>
             <div style="margin-bottom:10px"><label style="${lbl}">Image URL</label><input id="p-img" style="${inp}"></div>
             <div style="margin-bottom:10px"><label style="${lbl}">Description</label><textarea id="p-desc" rows="2" style="${inp}"></textarea></div>
-            <label style="display:block;margin-bottom:10px"><input type="checkbox" id="p-active" checked> Active</label>
-            <button type="submit" style="padding:9px 18px;background:#f5ad28;color:#0f172a;border:0;border-radius:6px;font-weight:bold;cursor:pointer">Save Product</button>
-            <p id="p-msg" style="color:#38bdf8;margin-top:8px"></p>
+            <label style="display:block;margin-bottom:12px;color:#0f172a;font-weight:600"><input type="checkbox" id="p-active" checked> Active</label>
+            <button type="submit" style="${primaryBtn}">Save Product</button>
+            <p id="p-msg" style="color:#16a34a;font-weight:600;margin-top:8px"></p>
           </form>
           <div id="products-box">लोड हो रहा है...</div>
         </div>
 
         <div id="ts-settings" style="display:none">
-          <form id="s-form" style="background:#1e293b;padding:14px;border-radius:8px">
+          <form id="s-form" style="${cardS}">
             <div style="margin-bottom:10px"><label style="${lbl}">Phone</label><input id="s-phone" style="${inp}"></div>
             <div style="margin-bottom:10px"><label style="${lbl}">WhatsApp</label><input id="s-wa" style="${inp}"></div>
             <div style="margin-bottom:10px"><label style="${lbl}">Address</label><input id="s-addr" style="${inp}"></div>
             <div style="margin-bottom:10px"><label style="${lbl}">Announcement</label><textarea id="s-ann" rows="2" style="${inp}"></textarea></div>
-            <label style="display:block;margin-bottom:8px"><input type="checkbox" id="s-show-ann"> Show Announcement</label>
-            <label style="display:block;margin-bottom:12px"><input type="checkbox" id="s-book-open"> Booking Open</label>
-            <button type="submit" style="padding:9px 18px;background:#f5ad28;color:#0f172a;border:0;border-radius:6px;font-weight:bold;cursor:pointer">Save Settings</button>
-            <p id="s-msg" style="color:#38bdf8;margin-top:8px"></p>
+            <label style="display:block;margin-bottom:8px;color:#0f172a;font-weight:600"><input type="checkbox" id="s-show-ann"> Show Announcement</label>
+            <label style="display:block;margin-bottom:14px;color:#0f172a;font-weight:600"><input type="checkbox" id="s-book-open"> Booking Open</label>
+            <button type="submit" style="${primaryBtn}">Save Settings</button>
+            <p id="s-msg" style="color:#16a34a;font-weight:600;margin-top:8px"></p>
           </form>
         </div>
       `;
@@ -337,7 +344,6 @@ const firebaseConfig = {
       drawDashboard(user);
     });
   } catch (err) {
-    area.innerHTML = '<p style="color:#f87171">' + esc(err.message) + "</p>";
+    area.innerHTML = '<p style="color:#dc2626;font-weight:600">' + esc(err.message) + "</p>";
   }
 })();
-

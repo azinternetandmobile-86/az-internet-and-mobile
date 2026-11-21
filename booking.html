@@ -1,1 +1,101 @@
-<!doctype html><html lang="hi"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="description" content="Book mobile repair and digital services"><title>ऑनलाइन बुकिंग | AZ INTERNET AND MOBILE</title><link rel="stylesheet" href="style.css"><script defer src="app.js"></script></head><body><header><div class="wrap nav"><a class="brand" href="index.html"><img src="az-logo.png" alt="AZ logo"><span>AZ INTERNET AND MOBILE<small>YOUR DIGITAL PARTNER</small></span></a><nav><a href="index.html">होम</a><a href="products.html">प्रोडक्ट्स</a><a href="index.html#contact">संपर्क</a></nav></div></header><section class="detail"><div class="wrap"><span class="tag">ONLINE SERVICE REQUEST</span><h1>अपनी सेवा बुक करें</h1><p>नीचे जानकारी भरें। आपकी रिक्वेस्ट इस डिवाइस के ब्राउज़र में सेव होगी और आप इसे WhatsApp पर भी भेज सकते हैं।</p></div></section><section><div class="wrap" style="max-width:820px"><div class="panel"><h2 style="color:var(--navy);margin-top:0">बुकिंग / पूछताछ फॉर्म</h2><form onsubmit="submitRequest(event)"><div class="form-grid"><div class="field"><label>आपका नाम *</label><input name="name" required maxlength="80" placeholder="पूरा नाम"></div><div class="field"><label>मोबाइल नंबर *</label><input name="phone" required inputmode="tel" pattern="[0-9+ -]{10,15}" placeholder="मोबाइल नंबर"></div><div class="field"><label>कौन-सी सेवा चाहिए? *</label><select name="service" required><option value="">सेवा चुनें</option><option>मोबाइल रिपेयरिंग</option><option>मोबाइल खरीदना</option><option>मोबाइल एक्सेसरीज़</option><option>इंटरनेट सेवा</option><option>रिचार्ज / बिल पेमेंट</option><option>ऑनलाइन फॉर्म / डिजिटल सेवा</option><option>बैंकिंग / UPI सहायता</option><option>प्रिंट / स्कैन</option><option>अन्य</option></select></div><div class="field"><label>पसंदीदा तारीख</label><input name="date" type="date" min="2026-01-01"></div><div class="field full"><label>समस्या या जरूरत का विवरण</label><textarea name="message" maxlength="1000" placeholder="कृपया अपनी जरूरत बताएं"></textarea></div></div><button class="btn yellow" type="submit">रिक्वेस्ट सबमिट करें</button></form><div id="form-result" style="margin-top:16px"></div><p class="muted-small">ध्यान दें: यह फॉर्म ऑनलाइन सर्वर पर नहीं भेजता। WhatsApp बटन दबाकर रिक्वेस्ट सीधे दुकान को भेजें।</p></div></div></section><footer><div class="wrap">AZ INTERNET AND MOBILE · 9960312286</div></footer></body></html>
+<!doctype html>
+<html lang="hi">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="description" content="Book mobile repair and digital services">
+  <title>ऑनलाइन बुकिंग | AZ INTERNET AND MOBILE</title>
+  <link rel="stylesheet" href="style.css">
+  <script defer src="app.js"></script>
+</head>
+<body>
+  <header>
+    <div class="wrap nav">
+      <a class="brand" href="index.html">
+        <img src="az-logo.png" alt="AZ logo">
+        <span>AZ INTERNET AND MOBILE<small>YOUR DIGITAL PARTNER</small></span>
+      </a>
+      <nav>
+        <a href="index.html">होम</a>
+        <a href="products.html">प्रोडक्ट्स</a>
+        <a href="index.html#contact">संपर्क</a>
+      </nav>
+    </div>
+  </header>
+
+  <section class="detail">
+    <div class="wrap">
+      <span class="tag">ONLINE SERVICE REQUEST</span>
+      <h1>अपनी सेवा बुक करें</h1>
+      <p>नीचे जानकारी भरें। आपकी रिक्वेस्ट सीधे हमारे सिस्टम में सेव होगी और आप इसे WhatsApp पर भी भेज सकते हैं।</p>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap" style="max-width:820px">
+      <div class="panel">
+        <h2 style="color:var(--navy);margin-top:0">बुकिंग / पूछताछ फॉर्म</h2>
+        <form onsubmit="submitRequest(event)">
+          <div class="form-grid">
+            <div class="field">
+              <label>आपका नाम *</label>
+              <input name="name" required maxlength="80" placeholder="पूरा नाम">
+            </div>
+            <div class="field">
+              <label>मोबाइल नंबर *</label>
+              <input name="phone" required inputmode="tel" pattern="[0-9+ -]{10,15}" placeholder="मोबाइल नंबर">
+            </div>
+            <div class="field">
+              <label>कौन-सी सेवा चाहिए? *</label>
+              <select name="service" required>
+                <option value="">सेवा चुनें</option>
+                <option>मोबाइल रिपेयरिंग</option>
+                <option>मोबाइल खरीदना</option>
+                <option>मोबाइल एक्सेसरीज़</option>
+                <option>इंटरनेट सेवा</option>
+                <option>रिचार्ज / बिल पेमेंट</option>
+                <option>ऑनलाइन फॉर्म / डिजिटल सेवा</option>
+                <option>बैंकिंग / UPI सहायता</option>
+                <option>प्रिंट / स्कैन</option>
+                <option>अन्य</option>
+              </select>
+            </div>
+            <div class="field">
+              <label>पसंदीदा तारीख</label>
+              <input name="date" type="date" min="2026-01-01">
+            </div>
+            <div class="field full">
+              <label>समस्या या जरूरत का विवरण</label>
+              <textarea name="message" maxlength="1000" placeholder="कृपया अपनी जरूरत बताएं"></textarea>
+            </div>
+          </div>
+          <button class="btn yellow" type="submit">रिक्वेस्ट सबमिट करें</button>
+        </form>
+        <div id="form-result" style="margin-top:16px"></div>
+        <p class="muted-small">आपकी बुकिंग Firestore में सेव हो जाती है और Admin Dashboard में दिखती है।</p>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="wrap">AZ INTERNET AND MOBILE · 9960312286</div>
+  </footer>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      const params = new URLSearchParams(window.location.search);
+      const productName = params.get("product");
+      if (productName) {
+        const serviceSelect = document.querySelector('select[name="service"]');
+        const messageBox = document.querySelector('textarea[name="message"]');
+        if (serviceSelect) {
+          serviceSelect.value = "मोबाइल एक्सेसरीज़";
+        }
+        if (messageBox && !messageBox.value) {
+          messageBox.value = "प्रोडक्ट बुकिंग/पूछताछ: " + productName;
+        }
+      }
+    });
+  </script>
+</body>
+</html>

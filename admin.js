@@ -12,26 +12,29 @@ const firebaseConfig = {
   const area = document.getElementById("auth-area");
   if (!area) return;
 
+  const inputStyle =
+    "display:block;width:100%;padding:10px 12px;margin-top:6px;box-sizing:border-box;background:#0f172a;color:#f8fafc;border:1px solid #334155;border-radius:6px";
+  const labelStyle = "display:block;color:#e2e8f0;font-weight:600;font-size:14px";
+
   function renderLoginForm() {
     area.innerHTML = `
       <form id="admin-login">
-        <label>Email ID</label>
-        <input id="admin-email" type="email"
-          placeholder="अपना Email डालें" required
-          style="display:block;width:100%;padding:12px;margin:10px 0;box-sizing:border-box">
+        <div style="margin-bottom:12px">
+          <label style="${labelStyle}">Email ID</label>
+          <input id="admin-email" type="email" placeholder="अपना Email डालें" required style="${inputStyle}">
+        </div>
 
-        <label>Password</label>
-        <input id="admin-password" type="password"
-          placeholder="अपना Password डालें" required
-          style="display:block;width:100%;padding:12px;margin:10px 0;box-sizing:border-box">
+        <div style="margin-bottom:14px">
+          <label style="${labelStyle}">Password</label>
+          <input id="admin-password" type="password" placeholder="अपना Password डालें" required style="${inputStyle}">
+        </div>
 
         <button type="submit"
-          style="padding:12px 25px;background:#f5ad28;
-          border:0;border-radius:8px;font-weight:bold;cursor:pointer">
+          style="padding:12px 25px;background:#f5ad28;color:#0f172a;border:0;border-radius:8px;font-weight:bold;cursor:pointer">
           Login करें
         </button>
       </form>
-      <p id="login-message"></p>
+      <p id="login-message" style="color:#f8fafc;margin-top:10px"></p>
     `;
   }
 
@@ -66,7 +69,6 @@ const firebaseConfig = {
     }
 
     async function checkIsAdmin(user) {
-      // पहले UID से document चेक करें, न मिले तो email फ़ील्ड से ढूँढें
       const uidDocRef = fsModule.doc(db, "admins", user.uid);
       const uidSnap = await fsModule.getDoc(uidDocRef);
 
@@ -90,60 +92,60 @@ const firebaseConfig = {
 
     function renderDashboard(user) {
       area.innerHTML = `
-        <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px;border-bottom:1px solid #ddd;padding-bottom:12px;margin-bottom:20px">
+        <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px;border-bottom:1px solid #334155;padding-bottom:12px;margin-bottom:20px">
           <div>
-            <h3 style="margin:0">AZ Internet & Mobile — Admin Dashboard</h3>
-            <small>Logged in: ${escapeHtml(user.email)}</small>
+            <h3 style="margin:0;color:#ffffff">AZ Internet & Mobile — Admin Dashboard</h3>
+            <small style="color:#cbd5e1">Logged in: ${escapeHtml(user.email)}</small>
           </div>
           <button id="admin-logout"
-            style="padding:8px 16px;background:#e53935;color:#fff;border:0;border-radius:6px;cursor:pointer">
+            style="padding:8px 16px;background:#e53935;color:#fff;border:0;border-radius:6px;font-weight:600;cursor:pointer">
             Logout
           </button>
         </div>
 
         <section style="margin-bottom:32px">
-          <h4>Bookings</h4>
-          <div id="bookings-list">Bookings लोड हो रही हैं...</div>
+          <h4 style="color:#f5ad28;margin-bottom:12px">Bookings</h4>
+          <div id="bookings-list" style="color:#e2e8f0">Bookings लोड हो रही हैं...</div>
         </section>
 
         <section>
-          <h4>Products जोड़ें / बदलें</h4>
-          <form id="product-form" style="background:#f9f9f9;padding:15px;border-radius:8px;margin-bottom:16px">
+          <h4 style="color:#f5ad28;margin-bottom:12px">Products जोड़ें / बदलें</h4>
+          <form id="product-form" style="background:#1e293b;border:1px solid #334155;padding:16px;border-radius:10px;margin-bottom:18px">
             <input type="hidden" id="product-id">
-            <div style="margin-bottom:10px">
-              <label>Product Name</label>
-              <input id="product-name" type="text" placeholder="जैसे: Tempered Glass / Charger / Repair Service" required
-                style="display:block;width:100%;padding:10px;margin-top:4px;box-sizing:border-box">
+
+            <div style="margin-bottom:12px">
+              <label style="${labelStyle}">Product Name</label>
+              <input id="product-name" type="text" placeholder="जैसे: Tempered Glass / Charger / Repair Service" required style="${inputStyle}">
             </div>
-            <div style="display:flex;gap:10px;flex-wrap:wrap;margin-bottom:10px">
+
+            <div style="display:flex;gap:12px;flex-wrap:wrap;margin-bottom:12px">
               <div style="flex:1;min-width:140px">
-                <label>Price (₹)</label>
-                <input id="product-price" type="number" step="0.01" placeholder="Price" required
-                  style="display:block;width:100%;padding:10px;margin-top:4px;box-sizing:border-box">
+                <label style="${labelStyle}">Price (₹)</label>
+                <input id="product-price" type="number" step="0.01" placeholder="Price" required style="${inputStyle}">
               </div>
               <div style="flex:1;min-width:140px">
-                <label>Category / Status</label>
-                <input id="product-category" type="text" placeholder="Accessories / Mobile / Service"
-                  style="display:block;width:100%;padding:10px;margin-top:4px;box-sizing:border-box">
+                <label style="${labelStyle}">Category / Status</label>
+                <input id="product-category" type="text" placeholder="Accessories / Mobile / Service" style="${inputStyle}">
               </div>
             </div>
-            <div style="margin-bottom:10px">
-              <label>Description</label>
-              <textarea id="product-desc" rows="2" placeholder="संक्षिप्त विवरण"
-                style="display:block;width:100%;padding:10px;margin-top:4px;box-sizing:border-box"></textarea>
+
+            <div style="margin-bottom:14px">
+              <label style="${labelStyle}">Description</label>
+              <textarea id="product-desc" rows="2" placeholder="संक्षिप्त विवरण" style="${inputStyle}"></textarea>
             </div>
+
             <button type="submit" id="product-submit-btn"
-              style="padding:10px 20px;background:#f5ad28;border:0;border-radius:6px;font-weight:bold;cursor:pointer">
+              style="padding:10px 20px;background:#f5ad28;color:#0f172a;border:0;border-radius:6px;font-weight:bold;cursor:pointer">
               Product जोड़ें
             </button>
             <button type="button" id="product-cancel-btn"
-              style="display:none;padding:10px 16px;background:#ccc;border:0;border-radius:6px;margin-left:8px;cursor:pointer">
+              style="display:none;padding:10px 16px;background:#475569;color:#fff;border:0;border-radius:6px;margin-left:8px;cursor:pointer">
               Cancel Edit
             </button>
-            <p id="product-msg" style="margin:8px 0 0;font-size:14px"></p>
+            <p id="product-msg" style="margin:10px 0 0;font-size:14px;color:#38bdf8"></p>
           </form>
 
-          <div id="products-list">Products लोड हो रहे हैं...</div>
+          <div id="products-list" style="color:#e2e8f0">Products लोड हो रहे हैं...</div>
         </section>
       `;
 
@@ -157,6 +159,58 @@ const firebaseConfig = {
       listenProducts();
     }
 
+    function renderBookingCards(container, snap) {
+      if (snap.empty) {
+        container.innerHTML = "<p style='color:#cbd5e1'>अभी कोई Booking नहीं है।</p>";
+        return;
+      }
+
+      container.innerHTML = snap.docs
+        .map(docSnap => {
+          const b = docSnap.data();
+          const currentStatus = b.status || "Pending";
+          const customer = b.customerName || b.name || b.phone || b.email || "Customer";
+          const item = b.service || b.productName || b.item || "-";
+
+          return `
+            <div style="background:#1e293b;border:1px solid #334155;border-radius:8px;padding:14px;margin-bottom:12px;color:#f8fafc">
+              <div style="display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px">
+                <strong style="font-size:16px;color:#ffffff">${escapeHtml(customer)}</strong>
+                <span style="color:#94a3b8;font-size:12px">ID: <code>${docSnap.id}</code></span>
+              </div>
+              <p style="margin:6px 0;color:#e2e8f0"><strong>Item / Service:</strong> ${escapeHtml(item)}</p>
+              ${b.phone ? `<p style="margin:4px 0;color:#e2e8f0"><strong>Phone:</strong> ${escapeHtml(b.phone)}</p>` : ""}
+              ${b.notes ? `<p style="margin:4px 0;color:#cbd5e1"><strong>Note:</strong> ${escapeHtml(b.notes)}</p>` : ""}
+              <div style="margin-top:10px;display:flex;align-items:center;gap:8px;flex-wrap:wrap">
+                <label style="color:#e2e8f0"><strong>Status:</strong></label>
+                <select class="booking-status-select" data-id="${docSnap.id}"
+                  style="padding:6px 10px;background:#0f172a;color:#f8fafc;border:1px solid #475569;border-radius:6px">
+                  ${["Pending", "Confirmed", "In Progress", "Completed", "Cancelled"]
+                    .map(st => `<option value="${st}" ${currentStatus === st ? "selected" : ""}>${st}</option>`)
+                    .join("")}
+                </select>
+              </div>
+            </div>
+          `;
+        })
+        .join("");
+
+      container.querySelectorAll(".booking-status-select").forEach(select => {
+        select.onchange = async e => {
+          const id = e.target.dataset.id;
+          const newStatus = e.target.value;
+          try {
+            await fsModule.updateDoc(fsModule.doc(db, "bookings", id), {
+              status: newStatus,
+              updatedAt: fsModule.serverTimestamp()
+            });
+          } catch (err) {
+            alert("Status बदलने में त्रुटि: " + err.message);
+          }
+        };
+      });
+    }
+
     function listenBookings() {
       const container = document.getElementById("bookings-list");
       const q = fsModule.query(
@@ -166,108 +220,19 @@ const firebaseConfig = {
 
       unsubBookings = fsModule.onSnapshot(
         q,
-        snap => {
-          if (snap.empty) {
-            container.innerHTML = "<p>अभी कोई Booking नहीं है।</p>";
-            return;
-          }
-
-          container.innerHTML = snap.docs
-            .map(docSnap => {
-              const b = docSnap.data();
-              const currentStatus = b.status || "Pending";
-              const customer = b.customerName || b.name || b.phone || b.email || "Customer";
-              const item = b.service || b.productName || b.item || "-";
-
-              return `
-                <div style="border:1px solid #ddd;border-radius:8px;padding:12px;margin-bottom:10px">
-                  <div style="display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px">
-                    <strong>${escapeHtml(customer)}</strong>
-                    <span>ID: <code>${docSnap.id}</code></span>
-                  </div>
-                  <p style="margin:6px 0"><strong>Item / Service:</strong> ${escapeHtml(item)}</p>
-                  ${b.phone ? `<p style="margin:4px 0"><strong>Phone:</strong> ${escapeHtml(b.phone)}</p>` : ""}
-                  ${b.notes ? `<p style="margin:4px 0"><strong>Note:</strong> ${escapeHtml(b.notes)}</p>` : ""}
-                  <div style="margin-top:8px;display:flex;align-items:center;gap:8px;flex-wrap:wrap">
-                    <label><strong>Status:</strong></label>
-                    <select class="booking-status-select" data-id="${docSnap.id}" style="padding:6px">
-                      ${["Pending", "Confirmed", "In Progress", "Completed", "Cancelled"]
-                        .map(st => `<option value="${st}" ${currentStatus === st ? "selected" : ""}>${st}</option>`)
-                        .join("")}
-                    </select>
-                  </div>
-                </div>
-              `;
-            })
-            .join("");
-
-          container.querySelectorAll(".booking-status-select").forEach(select => {
-            select.onchange = async e => {
-              const id = e.target.dataset.id;
-              const newStatus = e.target.value;
-              try {
-                await fsModule.updateDoc(fsModule.doc(db, "bookings", id), {
-                  status: newStatus,
-                  updatedAt: fsModule.serverTimestamp()
-                });
-              } catch (err) {
-                alert("Status बदलने में त्रुटि: " + err.message);
-              }
-            };
-          });
-        },
+        snap => renderBookingCards(container, snap),
         err => {
-          // यदि createdAt इंडेक्स/फ़ील्ड न हो तो बिना orderBy के fallback
           if (err.code === "failed-precondition" || err.code === "invalid-argument") {
-            listenBookingsFallback(container);
+            if (typeof unsubBookings === "function") unsubBookings();
+            unsubBookings = fsModule.onSnapshot(
+              fsModule.collection(db, "bookings"),
+              snap => renderBookingCards(container, snap)
+            );
           } else {
-            container.innerHTML = `<p style="color:red">Bookings Error: ${escapeHtml(err.message)}</p>`;
+            container.innerHTML = `<p style="color:#f87171">Bookings Error: ${escapeHtml(err.message)}</p>`;
           }
         }
       );
-    }
-
-    function listenBookingsFallback(container) {
-      if (typeof unsubBookings === "function") unsubBookings();
-      unsubBookings = fsModule.onSnapshot(fsModule.collection(db, "bookings"), snap => {
-        if (snap.empty) {
-          container.innerHTML = "<p>अभी कोई Booking नहीं है।</p>";
-          return;
-        }
-        container.innerHTML = snap.docs
-          .map(docSnap => {
-            const b = docSnap.data();
-            const currentStatus = b.status || "Pending";
-            const customer = b.customerName || b.name || b.phone || b.email || "Customer";
-            const item = b.service || b.productName || b.item || "-";
-            return `
-              <div style="border:1px solid #ddd;border-radius:8px;padding:12px;margin-bottom:10px">
-                <strong>${escapeHtml(customer)}</strong> — ${escapeHtml(item)}
-                <div style="margin-top:8px">
-                  <select class="booking-status-select" data-id="${docSnap.id}" style="padding:6px">
-                    ${["Pending", "Confirmed", "In Progress", "Completed", "Cancelled"]
-                      .map(st => `<option value="${st}" ${currentStatus === st ? "selected" : ""}>${st}</option>`)
-                      .join("")}
-                  </select>
-                </div>
-              </div>
-            `;
-          })
-          .join("");
-
-        container.querySelectorAll(".booking-status-select").forEach(select => {
-          select.onchange = async e => {
-            try {
-              await fsModule.updateDoc(fsModule.doc(db, "bookings", e.target.dataset.id), {
-                status: e.target.value,
-                updatedAt: fsModule.serverTimestamp()
-              });
-            } catch (err) {
-              alert("Status बदलने में त्रुटि: " + err.message);
-            }
-          };
-        });
-      });
     }
 
     function setupProductForm() {
@@ -324,7 +289,7 @@ const firebaseConfig = {
         fsModule.collection(db, "products"),
         snap => {
           if (snap.empty) {
-            container.innerHTML = "<p>अभी कोई Product नहीं है।</p>";
+            container.innerHTML = "<p style='color:#cbd5e1'>अभी कोई Product नहीं है।</p>";
             return;
           }
 
@@ -332,15 +297,17 @@ const firebaseConfig = {
             .map(docSnap => {
               const p = docSnap.data();
               return `
-                <div style="border:1px solid #ddd;border-radius:8px;padding:12px;margin-bottom:10px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px">
+                <div style="background:#1e293b;border:1px solid #334155;border-radius:8px;padding:14px;margin-bottom:10px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px;color:#f8fafc">
                   <div>
-                    <strong>${escapeHtml(p.name || "Unnamed")}</strong> — ₹${escapeHtml(String(p.price ?? 0))}
-                    ${p.category ? `<span style="background:#eee;padding:2px 8px;border-radius:4px;margin-left:6px;font-size:12px">${escapeHtml(p.category)}</span>` : ""}
-                    ${p.description ? `<p style="margin:4px 0 0;color:#555">${escapeHtml(p.description)}</p>` : ""}
+                    <strong style="color:#ffffff">${escapeHtml(p.name || "Unnamed")}</strong> — <span style="color:#f5ad28;font-weight:bold">₹${escapeHtml(String(p.price ?? 0))}</span>
+                    ${p.category ? `<span style="background:#334155;color:#e2e8f0;padding:2px 8px;border-radius:4px;margin-left:6px;font-size:12px">${escapeHtml(p.category)}</span>` : ""}
+                    ${p.description ? `<p style="margin:6px 0 0;color:#cbd5e1;font-size:14px">${escapeHtml(p.description)}</p>` : ""}
                   </div>
                   <div style="display:flex;gap:8px">
-                    <button class="edit-product-btn" data-id="${docSnap.id}" style="padding:6px 12px;cursor:pointer">बदलें</button>
-                    <button class="delete-product-btn" data-id="${docSnap.id}" style="padding:6px 12px;background:#e53935;color:#fff;border:0;border-radius:4px;cursor:pointer">हटाएँ</button>
+                    <button class="edit-product-btn" data-id="${docSnap.id}"
+                      style="padding:6px 12px;background:#334155;color:#fff;border:0;border-radius:4px;cursor:pointer">बदलें</button>
+                    <button class="delete-product-btn" data-id="${docSnap.id}"
+                      style="padding:6px 12px;background:#e53935;color:#fff;border:0;border-radius:4px;cursor:pointer">हटाएँ</button>
                   </div>
                 </div>
               `;
@@ -377,7 +344,7 @@ const firebaseConfig = {
           });
         },
         err => {
-          container.innerHTML = `<p style="color:red">Products Error: ${escapeHtml(err.message)}</p>`;
+          container.innerHTML = `<p style="color:#f87171">Products Error: ${escapeHtml(err.message)}</p>`;
         }
       );
     }
@@ -399,13 +366,13 @@ const firebaseConfig = {
         return;
       }
 
-      area.innerHTML = "<p>Admin अधिकार जाँचे जा रहे हैं...</p>";
+      area.innerHTML = "<p style='color:#cbd5e1'>Admin अधिकार जाँचे जा रहे हैं...</p>";
       const isAdmin = await checkIsAdmin(user);
 
       if (!isAdmin) {
         area.innerHTML = `
-          <p style="color:red">इस खाते (${escapeHtml(user.email)}) को Admin अनुमति नहीं है।</p>
-          <button id="admin-logout">Logout</button>
+          <p style="color:#f87171">इस खाते (${escapeHtml(user.email)}) को Admin अनुमति नहीं है।</p>
+          <button id="admin-logout" style="padding:8px 16px;background:#e53935;color:#fff;border:0;border-radius:6px;cursor:pointer">Logout</button>
         `;
         document.getElementById("admin-logout").onclick = () => authModule.signOut(auth);
         return;
@@ -435,7 +402,6 @@ const firebaseConfig = {
 
     attachLoginHandler();
   } catch (error) {
-    area.textContent = "Firebase Error: " + error.message;
+    area.innerHTML = `<p style="color:#f87171">Firebase Error: ${error.message}</p>`;
   }
 })();
-    

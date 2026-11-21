@@ -6,7 +6,6 @@
   <meta name="robots" content="noindex,nofollow">
   <title>Admin Dashboard | AZ INTERNET AND MOBILE</title>
   <link rel="stylesheet" href="style.css">
-  <script defer src="admin.js"></script>
 </head>
 <body>
   <header>
@@ -44,11 +43,12 @@
 
   <script>
     window.addEventListener("error", function (e) {
-      const area = document.getElementById("auth-area");
-      if (area && !area.innerHTML.trim()) {
-        area.innerHTML = `<p style="color:#f87171">Script Error: ${e.message || "कृपया admin.js जाँचें"}</p>`;
+      var el = document.getElementById("auth-area");
+      if (el) {
+        el.innerHTML = '<p style="color:#f87171">Error: ' + (e.message || "JS Error") + "</p>";
       }
     });
   </script>
+  <script src="admin.js"></script>
 </body>
 </html>

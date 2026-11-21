@@ -3,349 +3,13 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
-  <meta name="theme-color" content="#061224">
+  <meta name="theme-color" content="#2563EB">
   <title>AZ INTERNET AND MOBILE | काला बलुआ, अररिया, बिहार</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Devanagari:wght@400;500;600;700;800&family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
   <script type="module" src="site-sync.js"></script>
-  <style>
-    :root {
-      --bg: #061224;
-      --surface: #0d1d36;
-      --card: #112544;
-      --border: rgba(148, 163, 184, 0.22);
-      --gold: #f5ad28;
-      --gold-light: #ffd166;
-      --text: #f8fafc;
-      --muted: #cbd5e1;
-    }
-
-    * { box-sizing: border-box; }
-    html { scroll-behavior: smooth; }
-    body {
-      margin: 0 !important;
-      font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif !important;
-      background: radial-gradient(circle at top, #0d254c 0%, #061224 55%) !important;
-      color: #f8fafc !important;
-      line-height: 1.6;
-    }
-
-    .wrap { max-width: 1140px; margin: 0 auto; padding: 0 16px; }
-
-    /* Header */
-    header {
-      position: sticky;
-      top: 0;
-      z-index: 50;
-      background: rgba(6, 18, 36, 0.94);
-      backdrop-filter: blur(12px);
-      border-bottom: 1px solid var(--border);
-    }
-    .nav {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      flex-wrap: wrap;
-      gap: 10px;
-      padding: 12px 16px;
-    }
-    .brand {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      text-decoration: none;
-      color: #fff;
-      font-weight: 800;
-    }
-    .brand img {
-      width: 44px;
-      height: 44px;
-      border-radius: 50%;
-      border: 2px solid var(--gold);
-      object-fit: cover;
-    }
-    .brand span { display: flex; flex-direction: column; font-size: 15px; line-height: 1.2; }
-    .brand small { color: var(--gold); font-size: 11px; letter-spacing: 0.8px; }
-
-    nav { display: flex; flex-wrap: wrap; gap: 6px; align-items: center; }
-    nav a {
-      color: var(--muted);
-      text-decoration: none;
-      font-size: 13px;
-      font-weight: 600;
-      padding: 6px 11px;
-      border-radius: 999px;
-      transition: all 0.2s ease;
-    }
-    nav a:hover { color: #fff; background: rgba(245, 173, 40, 0.18); }
-    nav a.nav-admin {
-      background: rgba(245, 173, 40, 0.2);
-      color: var(--gold);
-      border: 1px solid rgba(245, 173, 40, 0.5);
-    }
-
-    /* Top Banner */
-    .top-banner-wrap { padding: 18px 0 6px; }
-    .top-banner-box {
-      border-radius: 18px;
-      overflow: hidden;
-      border: 2px solid rgba(245, 173, 40, 0.5);
-      box-shadow: 0 18px 40px rgba(0, 0, 0, 0.45);
-    }
-    .top-banner-box img {
-      display: block;
-      width: 100%;
-      max-height: 290px;
-      object-fit: cover;
-    }
-
-    /* Hero */
-    .hero-modern { padding: 30px 0 24px; text-align: center; }
-    .hero-center { max-width: 820px; }
-    .tag {
-      display: inline-block;
-      padding: 5px 14px;
-      border-radius: 999px;
-      background: rgba(245, 173, 40, 0.16);
-      border: 1px solid rgba(245, 173, 40, 0.45);
-      color: var(--gold);
-      font-size: 12px;
-      font-weight: 700;
-      letter-spacing: 0.6px;
-    }
-    .hero-modern h1 {
-      font-size: clamp(28px, 5vw, 46px);
-      margin: 14px 0 10px;
-      line-height: 1.18;
-      color: #fff;
-    }
-    .hero-modern h1 span {
-      background: linear-gradient(90deg, var(--gold), var(--gold-light));
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-    }
-    .hero-modern p { color: var(--muted); font-size: 15px; margin-bottom: 22px; }
-
-    /* Buttons */
-    .btn-cluster {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 10px;
-    }
-    .btn {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      gap: 6px;
-      padding: 11px 20px;
-      border-radius: 999px;
-      font-weight: 700;
-      font-size: 14px;
-      text-decoration: none;
-      border: 1px solid transparent;
-      cursor: pointer;
-      transition: transform 0.2s ease, filter 0.2s ease;
-    }
-    .btn:hover { transform: translateY(-2px); filter: brightness(1.06); }
-    .btn.yellow {
-      background: linear-gradient(135deg, #f5ad28, #ffcf56);
-      color: #071326;
-      box-shadow: 0 8px 20px rgba(245, 173, 40, 0.32);
-    }
-    .btn.blue {
-      background: linear-gradient(135deg, #1d4ed8, #3b82f6);
-      color: #fff;
-      box-shadow: 0 8px 20px rgba(37, 99, 235, 0.3);
-    }
-    .btn.green {
-      background: linear-gradient(135deg, #16a34a, #22c55e);
-      color: #fff;
-      box-shadow: 0 8px 20px rgba(22, 163, 74, 0.3);
-    }
-    .btn.glass {
-      background: rgba(255, 255, 255, 0.1);
-      color: #fff;
-      border-color: rgba(255, 255, 255, 0.25);
-    }
-    .btn.outline {
-      background: transparent;
-      color: var(--gold);
-      border-color: rgba(245, 173, 40, 0.55);
-    }
-
-    .quick-strip {
-      margin-top: 22px;
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 8px;
-    }
-    .quick-strip span {
-      background: var(--surface);
-      border: 1px solid var(--border);
-      padding: 6px 13px;
-      border-radius: 999px;
-      font-size: 12px;
-      color: var(--muted);
-    }
-
-    /* Sections */
-    section { padding: 40px 0; }
-    .alt-sec {
-      background: rgba(13, 29, 54, 0.6);
-      border-top: 1px solid var(--border);
-      border-bottom: 1px solid var(--border);
-    }
-    .sec-head { text-align: center; margin-bottom: 24px; }
-    .sec-head h2 { font-size: 28px; margin: 10px 0 6px; color: #fff; }
-    .muted { color: var(--muted); font-size: 14px; margin: 0; }
-
-    /* Services: 1 लाइन में 3 बड़े बटन */
-    .az-srv-grid {
-      display: grid !important;
-      grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
-      gap: 14px !important;
-    }
-    .az-srv-btn {
-      display: flex !important;
-      flex-direction: column !important;
-      align-items: center !important;
-      justify-content: center !important;
-      text-align: center !important;
-      text-decoration: none !important;
-      min-height: 155px;
-      padding: 20px 12px;
-      border-radius: 18px;
-      background: linear-gradient(145deg, #16325c, #0b1930) !important;
-      border: 2px solid rgba(245, 173, 40, 0.45) !important;
-      box-shadow: 0 10px 24px rgba(0, 0, 0, 0.35);
-      color: #ffffff !important;
-      transition: transform 0.2s ease, border-color 0.2s ease;
-    }
-    .az-srv-btn:hover {
-      transform: translateY(-3px);
-      border-color: #f5ad28 !important;
-    }
-    .az-srv-ico {
-      width: 52px;
-      height: 52px;
-      border-radius: 14px;
-      background: rgba(245, 173, 40, 0.2);
-      border: 1px solid rgba(245, 173, 40, 0.55);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 26px;
-      margin-bottom: 10px;
-    }
-    .az-srv-name {
-      font-size: 16px;
-      font-weight: 800;
-      line-height: 1.25;
-      color: #ffffff;
-    }
-    .az-srv-cta {
-      margin-top: 6px;
-      font-size: 12px;
-      font-weight: 700;
-      color: #f5ad28;
-    }
-
-    /* Gallery */
-    .gallery-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 16px;
-    }
-    .gallery-item {
-      margin: 0;
-      background: var(--card);
-      border: 1px solid var(--border);
-      border-radius: 16px;
-      overflow: hidden;
-    }
-    .gallery-item img {
-      display: block;
-      width: 100%;
-      height: 200px;
-      object-fit: cover;
-    }
-    .gallery-item figcaption {
-      padding: 10px 14px;
-      font-size: 13px;
-      font-weight: 600;
-      color: var(--muted);
-    }
-
-    /* Reviews */
-    .reviews-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-      gap: 16px;
-    }
-    .review-card {
-      background: var(--card);
-      border: 1px solid var(--border);
-      border-radius: 16px;
-      padding: 20px;
-    }
-    .stars { color: var(--gold); font-size: 18px; letter-spacing: 2px; margin-bottom: 8px; }
-    .review-card p { color: #e2e8f0; font-size: 14px; margin: 0 0 14px; }
-    .reviewer strong { display: block; color: #fff; font-size: 15px; }
-    .reviewer span { color: var(--muted); font-size: 12px; }
-
-    /* Google Map & Contact */
-    .map-contact-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(290px, 1fr));
-      gap: 20px;
-      align-items: stretch;
-    }
-    .map-frame {
-      border-radius: 16px;
-      overflow: hidden;
-      border: 1px solid var(--border);
-      min-height: 290px;
-    }
-    .map-frame iframe { width: 100%; height: 100%; min-height: 290px; border: 0; display: block; }
-    .contact-box {
-      background: var(--card);
-      border: 1px solid var(--border);
-      border-radius: 16px;
-      padding: 24px;
-    }
-    .contact-box h3 { color: var(--gold); margin-top: 0; }
-
-    /* Footer & Floating WhatsApp */
-    footer {
-      text-align: center;
-      padding: 26px 16px;
-      border-top: 1px solid var(--border);
-      color: var(--muted);
-      font-size: 13px;
-    }
-    .float {
-      position: fixed;
-      right: 16px;
-      bottom: 16px;
-      z-index: 60;
-      background: linear-gradient(135deg, #16a34a, #22c55e);
-      color: #fff;
-      text-decoration: none;
-      font-weight: 700;
-      padding: 12px 18px;
-      border-radius: 999px;
-      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
-    }
-
-    @media (max-width: 640px) {
-      .az-srv-grid { gap: 8px !important; }
-      .az-srv-btn { min-height: 124px; padding: 14px 6px; border-radius: 14px; }
-      .az-srv-ico { width: 38px; height: 38px; font-size: 19px; border-radius: 10px; }
-      .az-srv-name { font-size: 12px; }
-      .az-srv-cta { font-size: 10px; }
-    }
-  </style>
 </head>
 <body>
   <header>
@@ -383,8 +47,8 @@
       <h1>Digital Business<br><span>Smart Work, Big Growth</span></h1>
       <p>AZ INTERNET AND MOBILE के साथ मोबाइल रिपेयर, एक्सेसरीज़, रिचार्ज, बैंकिंग और सभी ऑनलाइन डिजिटल सेवाओं की सुविधा एक ही छत के नीचे पाएँ।</p>
       <div class="btn-cluster">
-        <a class="btn yellow" href="#services">हमारी सेवाएँ देखें</a>
-        <a class="btn blue" href="products.html">प्रोडक्ट कैटलॉग</a>
+        <a class="btn blue" href="#services">हमारी सेवाएँ देखें</a>
+        <a class="btn glass" href="products.html">प्रोडक्ट कैटलॉग</a>
         <a class="btn glass" href="booking.html">ऑनलाइन बुकिंग</a>
         <a class="btn green" href="https://wa.me/919960312286" target="_blank" rel="noopener">WhatsApp करें</a>
         <a class="btn outline" href="tel:+919960312286">अभी कॉल करें</a>
@@ -529,7 +193,7 @@
         </article>
       </div>
       <div style="text-align:center;margin-top:24px">
-        <a class="btn yellow" href="https://www.google.com/maps/search/?api=1&query=AZ+Internet+and+Mobile+Kala+Balua+Araria+Bihar" target="_blank" rel="noopener">⭐ Google पर अपना Review दें</a>
+        <a class="btn blue" href="https://www.google.com/maps/search/?api=1&query=AZ+Internet+and+Mobile+Kala+Balua+Araria+Bihar" target="_blank" rel="noopener">⭐ Google पर अपना Review दें</a>
       </div>
     </div>
   </section>
@@ -554,10 +218,10 @@
         <div class="contact-box">
           <h3>AZ INTERNET AND MOBILE</h3>
           <p><strong>📍 पता:</strong> HP Petrol Pump के सामने, काला बलुआ, अररिया, बिहार</p>
-          <p><strong>📞 फ़ोन / WhatsApp:</strong> <a href="tel:+919960312286" style="color:#f5ad28">9960312286</a></p>
+          <p><strong>📞 फ़ोन / WhatsApp:</strong> <a href="tel:+919960312286">9960312286</a></p>
           <p><strong>⏰ समय:</strong> सुबह 8:00 बजे – रात 9:00 बजे</p>
           <div class="btn-cluster" style="justify-content:flex-start;margin-top:18px">
-            <a class="btn yellow" href="https://www.google.com/maps/search/?api=1&query=Kala+Balua+Araria+Bihar" target="_blank" rel="noopener">📍 दिशा-निर्देश (Directions)</a>
+            <a class="btn blue" href="https://www.google.com/maps/search/?api=1&query=Kala%20Balua%20Araria%20Bihar" target="_blank" rel="noopener">📍 दिशा-निर्देश (Directions)</a>
             <a class="btn green" href="https://wa.me/919960312286" target="_blank" rel="noopener">💬 WhatsApp चैट</a>
           </div>
         </div>

@@ -30,6 +30,14 @@ const firebaseConfig = {
     bookingOpen: true
   };
 
+  function escapeHtml(str) {
+    return String(str ?? "")
+      .replace(/&/g, "&amp;")
+      .replace(/</g, "&lt;")
+      .replace(/>/g, "&gt;")
+      .replace(/"/g, "&quot;");
+  }
+
   function renderLoginForm() {
     area.innerHTML = `
       <form id="admin-login">
@@ -52,6 +60,7 @@ const firebaseConfig = {
     `;
   }
 
+  // पहले तुरंत लॉगिन फ़ॉर्म दिखाएँ ताकि पेज कभी खाली न दिखे
   renderLoginForm();
 
   try {
@@ -76,6 +85,7 @@ const firebaseConfig = {
     let unsubProducts = null;
     let activeTab = "bookings";
     let bookingFilter = "All";
+    let latestBookingsSnap = null;
 
     function cleanupListeners() {
       if (typeof unsubBookings === "function") unsubBookings();
@@ -285,8 +295,6 @@ const firebaseConfig = {
       setupSettingsForm();
     }
 
-    let latestBookingsSnap = null;
-
     function renderFilteredBookings() {
       const container = document.getElementById("bookings-list");
       if (!container || !latestBookingsSnap) return;
@@ -466,9 +474,4 @@ const firebaseConfig = {
             return;
           }
 
-          container.innerHTML = snap.docs
-            .map(docSnap => {
-              const p = docSnap.data();
-              const isActive = p.active !== false;
-              return `
-                <div style="background:#1e293b;border:1px solid #334155;border-radius:8px;p
+          container.innerHTML = sn

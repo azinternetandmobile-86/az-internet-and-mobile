@@ -60,7 +60,6 @@ const firebaseConfig = {
     `;
   }
 
-  // पहले तुरंत लॉगिन फ़ॉर्म दिखाएँ ताकि पेज कभी खाली न दिखे
   renderLoginForm();
 
   try {
@@ -143,9 +142,9 @@ const firebaseConfig = {
         </div>
 
         <div style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:22px">
-          <button type="button" id="tab-btn-bookings" style="${tabBtnBase}">📋 Bookings</button>
-          <button type="button" id="tab-btn-products" style="${tabBtnBase}">🛍️ Products</button>
-          <button type="button" id="tab-btn-settings" style="${tabBtnBase}">⚙️ Website Settings</button>
+          <button type="button" id="tab-btn-bookings" style="${tabBtnBase}">Bookings</button>
+          <button type="button" id="tab-btn-products" style="${tabBtnBase}">Products</button>
+          <button type="button" id="tab-btn-settings" style="${tabBtnBase}">Website Settings</button>
         </div>
 
         <section id="tab-sec-bookings">
@@ -474,4 +473,6 @@ const firebaseConfig = {
             return;
           }
 
-          container.innerHTML = sn
+          container.innerHTML = snap.docs
+            .map(docSnap => {
+              const p = docSnap.d

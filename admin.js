@@ -43,7 +43,9 @@ const firebaseConfig = {
       "https://www.gstatic.com/firebasejs/13.3.0/firebase-auth.js"
     );
 
-    const app = appModule.initializeApp(firebaseConfig);
+    const app = appModule.getApps().length
+  ? appModule.getApp()
+  : appModule.initializeApp(firebaseConfig);
     const auth = authModule.getAuth(app);
 
     const message = document.getElementById("login-message");

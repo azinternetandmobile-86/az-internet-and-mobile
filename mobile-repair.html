@@ -7,51 +7,6 @@
   <title>मोबाइल रिपेयरिंग | AZ INTERNET AND MOBILE</title>
   <link rel="stylesheet" href="style.css">
   <script type="module" src="site-sync.js"></script>
-  <style>
-    body { margin:0; font-family:system-ui,-apple-system,sans-serif; background:#061224; color:#f8fafc; line-height:1.6; }
-    .wrap { max-width:960px; margin:0 auto; padding:0 16px; }
-    header { position:sticky; top:0; z-index:50; background:rgba(6,18,36,0.94); border-bottom:1px solid rgba(148,163,184,0.2); }
-    .nav { display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:10px; padding:12px 16px; }
-    .brand { display:flex; align-items:center; gap:10px; text-decoration:none; color:#fff; font-weight:800; }
-    .brand img { width:40px; height:40px; border-radius:50%; border:2px solid #f5ad28; object-fit:cover; }
-    .brand small { display:block; color:#f5ad28; font-size:11px; }
-    nav { display:flex; flex-wrap:wrap; gap:8px; }
-    nav a { color:#cbd5e1; text-decoration:none; font-size:13px; font-weight:600; padding:6px 10px; border-radius:999px; }
-
-    /* साफ़ बैनर सबसे ऊपर */
-    .clean-banner-wrap { padding:20px 0 12px; }
-    .clean-banner-img {
-      display:block;
-      width:100%;
-      max-height:300px;
-      object-fit:cover;
-      border-radius:16px;
-      border:1.5px solid rgba(245,173,40,0.45);
-      overflow:hidden;
-    }
-
-    /* बैनर के ठीक नीचे Detail */
-    .clean-detail-wrap { padding:10px 0 44px; }
-    .clean-detail-card {
-      background:#0d1d36;
-      border:1px solid rgba(148,163,184,0.2);
-      border-radius:16px;
-      padding:22px;
-    }
-    .clean-detail-card h1 { margin:0 0 8px; font-size:28px; color:#fff; }
-    .clean-detail-card h2 { margin:18px 0 6px; font-size:19px; color:#f5ad28; }
-    .clean-detail-card p { margin:0 0 10px; color:#e2e8f0; }
-
-    .btn-row { display:flex; flex-wrap:wrap; gap:10px; margin-top:16px; }
-    .btn {
-      display:inline-flex; align-items:center; gap:6px; padding:10px 18px;
-      border-radius:999px; text-decoration:none; font-weight:700; font-size:14px;
-    }
-    .btn.yellow { background:linear-gradient(135deg,#f5ad28,#ffcf56); color:#061224; }
-    .btn.green { background:linear-gradient(135deg,#16a34a,#22c55e); color:#fff; }
-    .btn.blue { background:linear-gradient(135deg,#1d4ed8,#3b82f6); color:#fff; }
-    footer { text-align:center; padding:24px 16px; border-top:1px solid rgba(148,163,184,0.2); color:#cbd5e1; font-size:13px; }
-  </style>
 </head>
 <body>
   <header>
@@ -65,32 +20,30 @@
         <a href="index.html#services">सेवाएँ</a>
         <a href="products.html">प्रोडक्ट्स</a>
         <a href="booking.html">बुकिंग</a>
+        <a href="admin.html" class="nav-admin">Admin</a>
       </nav>
     </div>
   </header>
 
-  <!-- सबसे ऊपर Mobile Repairing Coming Soon Banner -->
-  <section class="clean-banner-wrap">
-    <div class="wrap">
-      <img class="clean-banner-img" src="mobile-repair-coming-soon.png" alt="Mobile Repairing Coming Soon Banner">
+  <!-- 1. बैनर सबसे ऊपर -->
+  <section style="padding:20px 0 8px">
+    <div class="wrap" style="max-width:960px">
+      <div class="srv-banner-box">
+        <img src="mobile-repair-coming-soon.png" alt="Mobile Repairing Coming Soon Banner">
+      </div>
     </div>
   </section>
 
-  <!-- बैनर के ठीक नीचे Detail -->
-  <section class="clean-detail-wrap">
-    <div class="wrap">
-      <div class="clean-detail-card">
-        <h1>मोबाइल रिपेयरिंग (Coming Soon)</h1>
-        <p>डिस्प्ले, बैटरी, चार्जिंग जैक, स्पीकर और सॉफ्टवेयर मरम्मत सेवा — जल्द ही पूर्ण रूप से शुरू होने जा रही है।</p>
-
-        <h2>सेवा का विवरण</h2>
-        <p>AZ INTERNET AND MOBILE पर मोबाइल रिपेयरिंग से जुड़ी सुविधाएँ उपलब्धता के अनुसार प्रदान की जाती हैं।</p>
-        <p style="color:#94a3b8;font-size:14px">पार्ट्स की उपलब्धता, अनुमानित खर्च और समय की पुष्टि दुकान या WhatsApp पर संपर्क करके करें।</p>
-
-        <h2>संपर्क जानकारी</h2>
-        <p><strong>AZ INTERNET AND MOBILE</strong> · HP Petrol Pump के सामने, काला बलुआ, अररिया, बिहार · फ़ोन: 9960312286</p>
-
-        <div class="btn-row">
+  <!-- 2. बैनर के ठीक नीचे Detail -->
+  <section style="padding:10px 0 44px">
+    <div class="wrap" style="max-width:960px">
+      <div class="panel">
+        <span class="tag">🛠️ MOBILE REPAIRING · COMING SOON</span>
+        <h1 style="margin:10px 0 8px;color:#ffffff">मोबाइल रिपेयरिंग सेवा</h1>
+        <p style="color:#e2e8f0">डिस्प्ले, बैटरी, चार्जिंग जैक, स्पीकर और सॉफ्टवेयर मरम्मत — जल्द ही और विस्तारित सेवा के साथ।</p>
+        <p class="muted">पार्ट्स की उपलब्धता, अनुमानित खर्च और समय की पुष्टि दुकान या WhatsApp पर संपर्क करके करें।</p>
+        <p style="color:#cbd5e1"><strong>AZ INTERNET AND MOBILE</strong> · HP Petrol Pump के सामने, काला बलुआ, अररिया, बिहार · <strong>फ़ोन:</strong> 9960312286</p>
+        <div class="btn-cluster" style="justify-content:flex-start;margin-top:16px">
           <a class="btn yellow" href="booking.html?service=मोबाइल%20रिपेयरिंग">ऑनलाइन बुकिंग करें</a>
           <a class="btn green" href="https://wa.me/919960312286?text=नमस्ते%20AZ%20Internet%20%26%20Mobile%2C%20मोबाइल%20रिपेयरिंग%20की%20जानकारी%20चाहिए।" target="_blank" rel="noopener">WhatsApp पर पूछें</a>
           <a class="btn blue" href="tel:+919960312286">कॉल करें</a>
@@ -103,5 +56,6 @@
   <footer>
     <div class="wrap">AZ INTERNET AND MOBILE · 9960312286</div>
   </footer>
+  <a class="float" href="https://wa.me/919960312286" target="_blank" rel="noopener">💬 WhatsApp</a>
 </body>
 </html>

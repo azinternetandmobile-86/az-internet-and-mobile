@@ -13,12 +13,12 @@ const firebaseConfig = {
   if (!area) return;
 
   const inp =
-    "display:block;width:100%;padding:10px 12px;margin-top:6px;box-sizing:border-box;background:#ffffff;color:#111827;border:1px solid #cbd5e1;border-radius:8px;font-size:14px;font-weight:500";
-  const lbl = "display:block;color:#111827;font-weight:700;font-size:14px";
+    "display:block;width:100%;padding:10px 12px;margin-top:6px;box-sizing:border-box;background:#090E1A;color:#F8FAFC;border:1px solid rgba(148,163,184,0.24);border-radius:10px;font-size:14px";
+  const lbl = "display:block;color:#E2E8F0;font-weight:600;font-size:14px";
   const cardS =
-    "background:#faf8f5;border:1px solid #d6d3cd;border-radius:12px;padding:14px;margin-bottom:12px;color:#111827";
+    "background:linear-gradient(160deg,#131E36 0%,#0C1324 100%);border:1px solid rgba(148,163,184,0.18);border-radius:14px;padding:14px;margin-bottom:12px;color:#F8FAFC;box-shadow:0 6px 16px rgba(0,0,0,0.3)";
   const primaryBtn =
-    "padding:10px 18px;background:linear-gradient(135deg,#0f766e,#0d9488);color:#ffffff;border:0;border-radius:8px;font-weight:700;cursor:pointer;box-shadow:0 4px 12px rgba(15,118,110,0.22)";
+    "padding:10px 20px;background:linear-gradient(135deg,#2563EB,#3B82F6);color:#FFFFFF;border:0;border-radius:10px;font-weight:700;cursor:pointer;box-shadow:0 6px 16px rgba(37,99,235,0.35)";
 
   const esc = s =>
     String(s ?? "")
@@ -40,7 +40,7 @@ const firebaseConfig = {
         </div>
         <button type="submit" style="${primaryBtn}">Login करें</button>
       </form>
-      <p id="login-msg" style="color:#b91c1c;font-weight:700;margin-top:10px">${esc(msg)}</p>
+      <p id="login-msg" style="color:#F87171;font-weight:600;margin-top:10px">${esc(msg)}</p>
     `;
   }
 
@@ -81,9 +81,9 @@ const firebaseConfig = {
         const s = document.getElementById("ts-" + t);
         if (!b || !s) return;
         const on = t === tab;
-        b.style.background = on ? "#0f766e" : "#ccfbf1";
-        b.style.color = on ? "#ffffff" : "#115e59";
-        b.style.borderColor = on ? "#0f766e" : "#99f6e4";
+        b.style.background = on ? "#2563EB" : "#111A2E";
+        b.style.color = on ? "#FFFFFF" : "#CBD5E1";
+        b.style.borderColor = on ? "#3B82F6" : "rgba(148,163,184,0.22)";
         s.style.display = on ? "block" : "none";
       });
     }
@@ -93,7 +93,7 @@ const firebaseConfig = {
       if (!box || !bookingsSnap) return;
       const list = bookingsSnap.docs.filter(d => filterVal === "All" || (d.data().status || "New") === filterVal);
       if (!list.length) {
-        box.innerHTML = "<p style='color:#374151;font-weight:600'>कोई Booking नहीं मिली।</p>";
+        box.innerHTML = "<p style='color:#94A3B8'>कोई Booking नहीं मिली।</p>";
         return;
       }
       const sts = ["New", "Pending", "Confirmed", "In Progress", "Completed", "Cancelled"];
@@ -103,15 +103,15 @@ const firebaseConfig = {
           const st = b.status || "New";
           return `
             <div style="${cardS}">
-              <strong style="font-size:15px;color:#111827">${esc(b.customerName || b.name || b.phone || "Customer")}</strong>
-              <p style="margin:4px 0;color:#1f2937">Service: ${esc(b.service || b.productName || b.item || "-")}</p>
-              ${b.phone ? `<p style="margin:4px 0;color:#1f2937">Phone: ${esc(b.phone)}</p>` : ""}
-              ${b.message || b.notes ? `<p style="margin:4px 0;color:#374151">Note: ${esc(b.message || b.notes)}</p>` : ""}
+              <strong style="font-size:15px;color:#F8FAFC">${esc(b.customerName || b.name || b.phone || "Customer")}</strong>
+              <p style="margin:4px 0;color:#CBD5E1">Service: ${esc(b.service || b.productName || b.item || "-")}</p>
+              ${b.phone ? `<p style="margin:4px 0;color:#CBD5E1">Phone: ${esc(b.phone)}</p>` : ""}
+              ${b.message || b.notes ? `<p style="margin:4px 0;color:#94A3B8">Note: ${esc(b.message || b.notes)}</p>` : ""}
               <div style="margin-top:10px;display:flex;gap:8px;align-items:center;flex-wrap:wrap">
-                <select class="b-st" data-id="${d.id}" style="padding:7px 10px;background:#ffffff;color:#111827;border:1px solid #cbd5e1;border-radius:8px;font-weight:700">
+                <select class="b-st" data-id="${d.id}" style="padding:7px 10px;background:#090E1A;color:#F8FAFC;border:1px solid rgba(148,163,184,0.28);border-radius:8px;font-weight:600">
                   ${sts.map(x => `<option value="${x}" ${st === x ? "selected" : ""}>${x}</option>`).join("")}
                 </select>
-                <button type="button" class="b-del" data-id="${d.id}" style="padding:7px 12px;background:#fee2e2;color:#b91c1c;border:1px solid #fecaca;border-radius:8px;font-weight:700;cursor:pointer;margin-left:auto">हटाएँ</button>
+                <button type="button" class="b-del" data-id="${d.id}" style="padding:7px 12px;background:rgba(239,68,68,0.16);color:#FCA5A5;border:1px solid rgba(239,68,68,0.4);border-radius:8px;font-weight:600;cursor:pointer;margin-left:auto">हटाएँ</button>
               </div>
             </div>`;
         })
@@ -173,7 +173,7 @@ const firebaseConfig = {
 
       unsubP = fsM.onSnapshot(fsM.collection(db, "products"), snap => {
         if (snap.empty) {
-          box.innerHTML = "<p style='color:#374151;font-weight:600'>अभी कोई Product नहीं है।</p>";
+          box.innerHTML = "<p style='color:#94A3B8'>अभी कोई Product नहीं है।</p>";
           return;
         }
         const map = new Map(snap.docs.map(d => [d.id, d.data()]));
@@ -183,12 +183,12 @@ const firebaseConfig = {
             return `
               <div style="${cardS}display:flex;justify-content:space-between;align-items:center;gap:8px;flex-wrap:wrap">
                 <div>
-                  <strong style="color:#111827">${esc(p.name)}</strong> — <span style="color:#0f766e;font-weight:800">₹${esc(p.price)}</span>
-                  ${p.category ? `<span style="background:#ccfbf1;color:#115e59;padding:2px 8px;border-radius:999px;font-size:12px;font-weight:700;margin-left:4px">${esc(p.category)}</span>` : ""}
+                  <strong style="color:#F8FAFC">${esc(p.name)}</strong> — <span style="color:#F59E0B;font-weight:700">₹${esc(p.price)}</span>
+                  ${p.category ? `<span style="background:rgba(59,130,246,0.18);color:#93C5FD;padding:2px 8px;border-radius:999px;font-size:12px;font-weight:600;margin-left:4px">${esc(p.category)}</span>` : ""}
                 </div>
                 <div style="display:flex;gap:6px">
-                  <button type="button" class="p-edit" data-id="${d.id}" style="padding:6px 12px;background:#e5e7eb;color:#111827;border:0;border-radius:6px;font-weight:700;cursor:pointer">बदलें</button>
-                  <button type="button" class="p-del" data-id="${d.id}" style="padding:6px 12px;background:#fee2e2;color:#b91c1c;border:0;border-radius:6px;font-weight:700;cursor:pointer">हटाएँ</button>
+                  <button type="button" class="p-edit" data-id="${d.id}" style="padding:6px 12px;background:#1E293B;color:#F8FAFC;border:1px solid rgba(148,163,184,0.25);border-radius:8px;font-weight:600;cursor:pointer">बदलें</button>
+                  <button type="button" class="p-del" data-id="${d.id}" style="padding:6px 12px;background:rgba(239,68,68,0.16);color:#FCA5A5;border:1px solid rgba(239,68,68,0.4);border-radius:8px;font-weight:600;cursor:pointer">हटाएँ</button>
                 </div>
               </div>`;
           })
@@ -249,11 +249,11 @@ const firebaseConfig = {
 
     function drawDashboard(user) {
       const btnS =
-        "padding:8px 14px;border:1px solid #99f6e4;border-radius:8px;font-weight:700;cursor:pointer;transition:0.2s";
+        "padding:8px 14px;border:1px solid rgba(148,163,184,0.22);border-radius:10px;font-weight:700;cursor:pointer;transition:0.2s";
       area.innerHTML = `
-        <div style="display:flex;justify-content:space-between;align-items:center;gap:8px;flex-wrap:wrap;border-bottom:1px solid #d6d3cd;padding-bottom:12px;margin-bottom:16px">
-          <div style="color:#111827"><strong>${esc(user.email)}</strong></div>
-          <button id="logout-btn" style="padding:7px 14px;background:#fee2e2;color:#b91c1c;border:1px solid #fecaca;border-radius:8px;font-weight:700;cursor:pointer">Logout</button>
+        <div style="display:flex;justify-content:space-between;align-items:center;gap:8px;flex-wrap:wrap;border-bottom:1px solid rgba(148,163,184,0.18);padding-bottom:12px;margin-bottom:16px">
+          <div style="color:#F8FAFC"><strong>${esc(user.email)}</strong></div>
+          <button id="logout-btn" style="padding:7px 14px;background:rgba(239,68,68,0.16);color:#FCA5A5;border:1px solid rgba(239,68,68,0.4);border-radius:8px;font-weight:600;cursor:pointer">Logout</button>
         </div>
         <div style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:18px">
           <button type="button" id="tb-bookings" style="${btnS}">Bookings</button>
@@ -262,7 +262,7 @@ const firebaseConfig = {
         </div>
 
         <div id="ts-bookings">
-          <select id="b-filter" style="padding:8px 12px;background:#ffffff;color:#111827;border:1px solid #cbd5e1;border-radius:8px;margin-bottom:12px;font-weight:700">
+          <select id="b-filter" style="padding:8px 12px;background:#090E1A;color:#F8FAFC;border:1px solid rgba(148,163,184,0.28);border-radius:8px;margin-bottom:12px;font-weight:600">
             <option value="All">All</option><option value="New">New</option><option value="Pending">Pending</option>
             <option value="Confirmed">Confirmed</option><option value="In Progress">In Progress</option>
             <option value="Completed">Completed</option><option value="Cancelled">Cancelled</option>
@@ -278,9 +278,9 @@ const firebaseConfig = {
             <div style="margin-bottom:10px"><label style="${lbl}">Category</label><input id="p-cat" style="${inp}"></div>
             <div style="margin-bottom:10px"><label style="${lbl}">Image URL</label><input id="p-img" style="${inp}"></div>
             <div style="margin-bottom:10px"><label style="${lbl}">Description</label><textarea id="p-desc" rows="2" style="${inp}"></textarea></div>
-            <label style="display:block;margin-bottom:12px;color:#111827;font-weight:700"><input type="checkbox" id="p-active" checked> Active</label>
+            <label style="display:block;margin-bottom:12px;color:#E2E8F0;font-weight:600"><input type="checkbox" id="p-active" checked> Active</label>
             <button type="submit" style="${primaryBtn}">Save Product</button>
-            <p id="p-msg" style="color:#15803d;font-weight:700;margin-top:8px"></p>
+            <p id="p-msg" style="color:#4ADE80;font-weight:600;margin-top:8px"></p>
           </form>
           <div id="products-box">लोड हो रहा है...</div>
         </div>
@@ -291,10 +291,10 @@ const firebaseConfig = {
             <div style="margin-bottom:10px"><label style="${lbl}">WhatsApp</label><input id="s-wa" style="${inp}"></div>
             <div style="margin-bottom:10px"><label style="${lbl}">Address</label><input id="s-addr" style="${inp}"></div>
             <div style="margin-bottom:10px"><label style="${lbl}">Announcement</label><textarea id="s-ann" rows="2" style="${inp}"></textarea></div>
-            <label style="display:block;margin-bottom:8px;color:#111827;font-weight:700"><input type="checkbox" id="s-show-ann"> Show Announcement</label>
-            <label style="display:block;margin-bottom:14px;color:#111827;font-weight:700"><input type="checkbox" id="s-book-open"> Booking Open</label>
+            <label style="display:block;margin-bottom:8px;color:#E2E8F0;font-weight:600"><input type="checkbox" id="s-show-ann"> Show Announcement</label>
+            <label style="display:block;margin-bottom:14px;color:#E2E8F0;font-weight:600"><input type="checkbox" id="s-book-open"> Booking Open</label>
             <button type="submit" style="${primaryBtn}">Save Settings</button>
-            <p id="s-msg" style="color:#15803d;font-weight:700;margin-top:8px"></p>
+            <p id="s-msg" style="color:#4ADE80;font-weight:600;margin-top:8px"></p>
           </form>
         </div>
       `;
@@ -344,6 +344,6 @@ const firebaseConfig = {
       drawDashboard(user);
     });
   } catch (err) {
-    area.innerHTML = '<p style="color:#b91c1c;font-weight:700">' + esc(err.message) + "</p>";
+    area.innerHTML = '<p style="color:#F87171;font-weight:600">' + esc(err.message) + "</p>";
   }
 })();

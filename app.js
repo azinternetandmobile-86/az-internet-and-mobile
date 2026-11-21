@@ -1,4 +1,3 @@
-
 const firebaseConfig = {
   apiKey: "AIzaSyDXp--aSw0XvYbKVG70qtGRLGqLdl9E",
   authDomain: "az-internet-and-mobile.firebaseapp.com",
@@ -9,14 +8,16 @@ const firebaseConfig = {
   measurementId: "G-GYCBRB93S7"
 };
 
-// Firebase को लोड करें
+// Firebase को लोड करें (यदि पहले से initialized है तो वही app लें)
 const firebaseReady = (async () => {
   const [appModule, firestore] = await Promise.all([
     import("https://www.gstatic.com/firebasejs/13.3.0/firebase-app.js"),
     import("https://www.gstatic.com/firebasejs/13.3.0/firebase-firestore.js")
   ]);
 
-  const app = appModule.initializeApp(firebaseConfig);
+  const app = appModule.getApps().length
+    ? appModule.getApp()
+    : appModule.initializeApp(firebaseConfig);
   const db = firestore.getFirestore(app);
 
   return { db, firestore };
@@ -115,13 +116,18 @@ window.submitRequest = async function (event) {
   };
 
   if (!booking.name || !booking.phone || !booking.service) {
-    result.textContent = "कृपया सभी जरूरी जानकारी भरें।";
+    if (result) {
+      result.textContent = "कृपया सभी जरूरी जानकारी भरें।";
+      result.style.color = "red";
+    }
     return;
   }
 
-  button.disabled = true;
-  button.textContent = "सेव हो रहा है...";
-  result.textContent = "";
+  if (button) {
+    button.disabled = true;
+    button.textContent = "सेव हो रहा है...";
+  }
+  if (result) result.textContent = "";
 
   try {
     const { db, firestore } = await firebaseReady;
@@ -134,18 +140,23 @@ window.submitRequest = async function (event) {
       }
     );
 
-    result.textContent = "आपकी रिक्वेस्ट सफलतापूर्वक सेव हो गई है!";
-    result.style.color = "green";
+    if (result) {
+      result.textContent = "आपकी रिक्वेस्ट सफलतापूर्वक सेव हो गई है!";
+      result.style.color = "green";
+    }
     form.reset();
 
   } catch (error) {
     console.error("Booking Error:", error);
-    result.textContent =
-      "रिक्वेस्ट सेव नहीं हुई: " + error.message;
-    result.style.color = "red";
+    if (result) {
+      result.textContent = "रिक्वेस्ट सेव नहीं हुई: " + error.message;
+      result.style.color = "red";
+    }
 
   } finally {
-    button.disabled = false;
-    button.textContent = "रिक्वेस्ट सबमिट करें";
+    if (button) {
+      button.disabled = false;
+      button.textContent = "रिक्वेस्ट सबमिट करें";
+    }
   }
 };

@@ -41,5 +41,14 @@
   <footer>
     <div class="wrap">AZ INTERNET AND MOBILE · Admin</div>
   </footer>
+
+  <script>
+    window.addEventListener("error", function (e) {
+      const area = document.getElementById("auth-area");
+      if (area && !area.innerHTML.trim()) {
+        area.innerHTML = `<p style="color:#f87171">Script Error: ${e.message || "कृपया admin.js जाँचें"}</p>`;
+      }
+    });
+  </script>
 </body>
 </html>
